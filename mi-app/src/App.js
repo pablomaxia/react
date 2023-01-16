@@ -3,6 +3,7 @@ import "./App.css";
 import HelloComponent from "./components/HelloComponent";
 import React, { Component } from "react";
 import InputComponent from "./components/InputComponent";
+import RelojComponent from "./components/RelojComponent";
 
 class App extends Component {
   constructor() {
@@ -28,6 +29,7 @@ class App extends Component {
           <InputComponent
             nombre={this.state.name}
             cambiarNombre={this.changeName}></InputComponent>
+          <RelojComponent></RelojComponent>
         </header>
       </div>
     );
