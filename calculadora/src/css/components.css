@@ -1,0 +1,15 @@
+.resultado {
+  background-color: antiquewhite;
+  color: black;
+  padding: 0.5em 1em;
+  text-align: center;
+}
+
+.ce {
+  background-color: red;
+  float: right;
+}
+
+button {
+  padding: 1em;
+}
