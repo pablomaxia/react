@@ -20,31 +20,32 @@ export default class Calculadora extends Component {
             pregunta={this.state.pregunta}
           />
           <div className="fila">
+            <Boton label={"DEL"} handleClick={this.handleClick} />
             <Boton label={"CE"} handleClick={this.handleClick} />
-            <Boton label={"."} handleClick={this.handleClick} />
-            <Boton label={"/"} handleClick={this.handleClick} />
-          </div>
-          <div className="fila">
-            <Boton label={"7"} handleClick={this.handleClick} />
-            <Boton label={"8"} handleClick={this.handleClick} />
-            <Boton label={"9"} handleClick={this.handleClick} />
-            <Boton label={"*"} handleClick={this.handleClick} />
-          </div>
-          <div className="fila">
-            <Boton label={"4"} handleClick={this.handleClick} />
-            <Boton label={"5"} handleClick={this.handleClick} />
-            <Boton label={"6"} handleClick={this.handleClick} />
-            <Boton label={"-"} handleClick={this.handleClick} />
           </div>
           <div className="fila">
             <Boton label={"1"} handleClick={this.handleClick} />
             <Boton label={"2"} handleClick={this.handleClick} />
             <Boton label={"3"} handleClick={this.handleClick} />
-            <Boton label={"+"} handleClick={this.handleClick} />
+            <Boton label={"/"} handleClick={this.handleClick} />
           </div>
           <div className="fila">
+            <Boton label={"4"} handleClick={this.handleClick} />
+            <Boton label={"5"} handleClick={this.handleClick} />
+            <Boton label={"6"} handleClick={this.handleClick} />
+            <Boton label={"*"} handleClick={this.handleClick} />
+          </div>
+          <div className="fila">
+            <Boton label={"7"} handleClick={this.handleClick} />
+            <Boton label={"8"} handleClick={this.handleClick} />
+            <Boton label={"9"} handleClick={this.handleClick} />
+            <Boton label={"-"} handleClick={this.handleClick} />
+          </div>
+          <div className="fila">
+            <Boton label={"."} handleClick={this.handleClick} />
             <Boton label={"0"} handleClick={this.handleClick} />
             <Boton label={"="} handleClick={this.handleClick} />
+            <Boton label={"+"} handleClick={this.handleClick} />
           </div>
         </div>
       </div>
@@ -81,7 +82,7 @@ export default class Calculadora extends Component {
         break;
       }
 
-      case "Delete": {
+      case "DEL": {
         var str = this.state.pregunta;
         str = str.substr(0, str.length - 1);
         this.setState({ pregunta: str });
