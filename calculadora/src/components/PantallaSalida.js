@@ -6,7 +6,9 @@ class PantallaSalida extends Component {
     return (
       <div className="pantalla">
         <ColumnaPantallaSalida value={this.props.pregunta} />
+        {/*Muestra el valor de la pregunta, obtenido mediante las props*/}
         <ColumnaPantallaSalida value={this.props.respuesta} />
+        {/*Muestra el valor de la respuesta, obtenido mediante las props*/}
       </div>
     );
   }
