@@ -9,7 +9,11 @@ export default class Contador extends Component {
     this.state = {
       resultado: 0,
     };
-    this.handleClick = this.handleClick.bind(this);
+    this.handleClick = this.handleClick.bind(this); //Asocia el handleClick al componente.
+  }
+
+  componentWillUnmount() {
+    this.reset();
   }
 
   render() {
@@ -65,10 +69,14 @@ export default class Contador extends Component {
       }
       // Solo para pruebas
       default: {
-        this.setState({ resultado: 0 });
+        this.reset();
         break;
       }
     }
+  }
+
+  reset() {
+    this.setState({ resultado: 0 });
   }
 }
 /*Renderiza el componente en la raíz de la aplicación */
