@@ -20,12 +20,12 @@ code {
   border: 1px dashed beige;
 }
 
-input[type="number"] {
-  padding: 0.1em;
+.contador {
+  padding: 0.2em;
   margin: 3em;
   text-align: center;
   background-color: slategrey;
-  border: 1px solid slategrey;
+  border: 1px dashed black;
   color: white;
   font-size: large;
 }
@@ -35,10 +35,9 @@ button {
   margin: 0.5em;
   text-align: center;
   background-color: aquamarine;
-  color: black;
   font-size: large;
 }
 
-button:active {
+button:hover {
   background-color: azure;
 }

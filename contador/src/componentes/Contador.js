@@ -7,76 +7,62 @@ export default class Contador extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      resultado: 0,
+      count: 0,
     };
-    this.handleClick = this.handleClick.bind(this); //Asocia el handleClick al componente.
+
+    this.increment = this.increment.bind(this); // Asocia el método increment al componente.
+    this.decrement = this.decrement.bind(this); // Asocia el método decrement al componente.
+    this.reset = this.reset.bind(this); // Asocia el método reset al componente.
   }
 
   componentWillUnmount() {
     this.reset();
   }
 
+  // Suma 1 al contador
+  increment() {
+    /*this.setState((state) => {
+      if (this.state.count >= this.props.max) return;
+      return { count: this.state.count + 1 };
+    });*/
+    this.setState(
+      (state) => ({ count: this.state.count + 1 }),
+      () => {
+        console.log(this.state.count);
+      }
+    );
+    this.setState((state) => ({ count: this.state.count + 1 }));
+    this.setState((state) => ({ count: this.state.count + 1 }));
+  }
+
+  // Resta 1 el contador
+  decrement() {
+    /*this.setState((state) => {
+      if (this.state.count <= this.props.min) return;
+      return { count: this.state.count - 1 };
+    });*/
+    this.setState((state) => ({ count: this.state.count - 1 }));
+  }
+  // Iguala el count a 0
+  reset() {
+    this.setState((state) => ({ count: 0 }));
+  }
+
   render() {
     return (
       <div className="contenedor">
-        {/*Es donde se muestra el resultado*/}
-        <Pantalla resultado={this.state.resultado} />
+        {/*Es donde se muestra el contador*/}
+        <Pantalla contador={this.state.count} />
         <div className="botones">
           {/*Incrementa el contador en 1*/}
-          <Boton valor="+" metodo={this.handleClick} nombre="Increment" />
+          <Boton valor="+" metodo={this.increment} nombre="Increment" />
           {/*Reduce el contador en 1*/}
-          <Boton valor="-" metodo={this.handleClick} nombre="Decrement" />
+          <Boton valor="-" metodo={this.decrement} nombre="Decrement" />
           {/*Reinicia el contador*/}
-          <Boton valor="reset" metodo={this.handleClick} nombre="Reset" />
+          <Boton valor="reset" metodo={this.reset} nombre="Reset" />
         </div>
-        {/*{" "}
-          <div className="resultado">
-            <input type="number" readOnly value={this.props.resultado} />
-          </div>
-          <button value="+" onClick={this.handleClick}>
-            Increment
-          </button>
-          <button value="-" onClick={this.handleClick}>
-            Decrement
-          </button>
-          <button value="reset" onClick={this.handleClick}>
-            Reset
-          </button>
-          */}
       </div>
     );
-  }
-
-  handleClick(event) {
-    const valor = event.target.value; // Es el valor del botón que llama al evento
-    var resultado = this.state.resultado; // Es el valor del estado resultado
-
-    switch (valor) {
-      // Suma 1 al resultado
-      case "+": {
-        this.setState({ resultado: resultado + 1 });
-        break;
-      }
-      // Resta 1 al resultado
-      case "-": {
-        this.setState({ resultado: resultado - 1 });
-        break;
-      }
-      // Iguala el resultado a 0
-      case "reset": {
-        this.setState({ resultado: 0 });
-        break;
-      }
-      // Solo para pruebas
-      default: {
-        this.reset();
-        break;
-      }
-    }
-  }
-
-  reset() {
-    this.setState({ resultado: 0 });
   }
 }
 /*Renderiza el componente en la raíz de la aplicación */
