@@ -10,7 +10,7 @@ export default class Formulario extends Component {
       precio: 0,
       cantidad: 0,
       factura: "",
-      total: 0
+      total: 0,
     };
     this.crearFactura = this.crearFactura.bind(this);
     this.opcionChange = this.opcionChange.bind(this);
@@ -81,12 +81,12 @@ export default class Formulario extends Component {
         this.state.precio +
         " " +
         this.state.cantidad +
-        "\n"
+        "\n",
     }));
     this.setState((state) => ({
       total: parseFloat(
         this.state.total + this.state.precio * this.state.cantidad
-      )
+      ),
     }));
   }
 }
