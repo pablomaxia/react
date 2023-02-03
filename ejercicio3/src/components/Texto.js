@@ -4,36 +4,31 @@ export default class Texto extends Component {
   constructor() {
     super();
     this.state = {
-      texto1: "",
-      texto2: "",
+      texto: "",
     };
-    this.changeText1 = this.changeText1.bind(this);
-    this.changeText2 = this.changeText2.bind(this);
+    this.changeText = this.changeText.bind(this);
   }
+
+  onTrigger = () => {
+    this.props.callback(this.state.texto);
+  };
+
   render() {
     return (
       <div>
         <div>
+          <label>{this.props.nombre}</label>
           <input
+            className="texto"
             type="text"
-            value={this.state.texto1}
-            onChange={this.changeText2}
-          />
-        </div>
-        <div>
-          <input
-            type="text"
-            value={this.state.texto2}
-            onChange={this.changeText1}
+            value={this.props.texto}
+            onChange={this.onTrigger}
           />
         </div>
       </div>
     );
   }
-  changeText1(e) {
-    this.setState((state) => ({ texto1: state.texto1 + e.target.value }));
-  }
-  changeText2(e) {
-    this.setState((state) => ({ texto2: state.texto2 + e.target.value }));
+  changeText(e) {
+    this.setState((state) => ({ texto: state.texto + e.target.value }));
   }
 }

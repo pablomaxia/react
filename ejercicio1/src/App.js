@@ -4,7 +4,9 @@ import Suma from "./components/Suma";
 function App() {
   return (
     <div className="App">
-      <Suma />
+      <header className="App-header">
+        <Suma />
+      </header>
     </div>
   );
 }
