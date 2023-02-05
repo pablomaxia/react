@@ -14,19 +14,19 @@ code {
 
 .css-fix {
   white-space: pre-wrap; /* or pre-line */
-}
-
-div {
   margin: 1em;
 }
-
-label {
-  float: left;
+.producto{
+  position: relative;
+  right: 125px;
 }
 
-input,
-option {
-  float: right;
-  padding: 1em;
-  text-align: left;
+.precio{
+  position: relative;
+  right: 30px;
+}
+
+.cantidad{
+  position: relative;
+  right: -60px;
 }

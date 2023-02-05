@@ -11,3 +11,20 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+button {
+  padding: 0.5em 1em;
+  margin: 1em;
+  text-align: center;
+  background-color: cadetblue;
+}
+
+button:active{
+  background-color: aliceblue;
+}
+
+span{
+  padding: 0.5em 1em;
+  margin: 1em;
+  text-align: center;
+}

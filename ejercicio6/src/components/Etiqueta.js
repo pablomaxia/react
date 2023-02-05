@@ -3,7 +3,7 @@ export default class Etiqueta extends Component {
   render() {
     return (
       <div>
-        <span>{this.props.valor}</span>
+        <span onChange={this.props.metodo}>{this.props.valor}</span>
       </div>
     );
   }
