@@ -17,6 +17,7 @@ export default class Jugador extends Component {
         />
         <label>Media: </label>
         <Etiqueta valor={this.props.media} metodo={this.props.metodo} />
+        <hr />
       </div>
     );
   }
