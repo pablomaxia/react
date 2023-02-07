@@ -3,13 +3,13 @@ import Boton from "./Boton";
 import Etiqueta from "./Etiqueta";
 import Jugador from "./Jugador";
 
-const puntuaciones = [];
+var puntuaciones = [];
 export default class Dado extends Component {
   constructor(props) {
     super(props);
     this.state = {
       jugadores: "",
-      turno: 0,
+      turno: 1,
       jugador: 1,
       numero: 0,
       puntuacionParcial: 0,
@@ -88,20 +88,8 @@ export default class Dado extends Component {
           }
         />
         <Boton valor="dado" nombre="Dado" metodo={this.juego} />
-        <Etiqueta valor={this.state.numero} />
         <hr />
         {jugadoresList}
-        {puntuaciones.forEach((jugador) => {
-          {
-            jugador.jugador;
-          }
-          {
-            (":");
-          }
-          {
-            jugador.puntuacion;
-          }
-        })}
       </div>
     );
   }
@@ -113,7 +101,9 @@ export default class Dado extends Component {
   }
 
   juego() {
-    if (this.state.turno < 5 && this.state.jugadores >= 2) {
+    if (this.state.turno <= 5 && this.state.jugadores >= 2) {
+      let jugador = "";
+      let numero = this.state.numero;
       switch (this.state.jugador) {
         case 1:
           this.setState((state) => ({
@@ -122,7 +112,8 @@ export default class Dado extends Component {
             media: this.state.puntuacionParcial / this.state.jugadores,
             jugador: this.state.jugador + 1
           }));
-
+          jugador = "Jugador 1";
+          numero = this.state.numero;
           break;
         case 2:
           this.setState((state) => ({
@@ -132,6 +123,8 @@ export default class Dado extends Component {
             media2: this.state.puntuacionParcial2 / this.state.jugadores,
             jugador: this.state.jugador + 1
           }));
+          jugador = "Jugador 2";
+          numero = this.state.numero2;
 
           break;
         case 3:
@@ -142,6 +135,8 @@ export default class Dado extends Component {
             media3: this.state.puntuacionParcial3 / this.state.jugadores,
             jugador: this.state.jugador + 1
           }));
+          jugador = "Jugador 3";
+          numero = this.state.numero3;
 
           break;
         case 4:
@@ -152,20 +147,23 @@ export default class Dado extends Component {
             media4: this.state.puntuacionParcial4 / this.state.jugadores,
             jugador: this.state.jugador + 1
           }));
+          jugador = "Jugador 4";
+          numero = this.state.numero4;
 
           break;
         default:
           break;
       }
+      //alert(jugador + " ha sacado un: " + numero);
       console.log(this.state.turno);
+
       if (this.state.jugador == this.state.jugadores) {
         this.setState((state) => ({
           turno: parseInt(this.state.turno + 1),
           jugador: 1
         }));
       }
-    }
-    if (this.state.turno >= 4) {
+    } else if (this.state.turno >= 6 && puntuaciones.length == 0) {
       if (this.state.jugadores >= 2) {
         puntuaciones.push({
           jugador: "Jugador 1",
@@ -188,6 +186,16 @@ export default class Dado extends Component {
           jugador: "Jugador 4",
           puntuacion: this.state.puntuacionParcial4
         });
+
+      puntuaciones = puntuaciones.sort((a, b) => {
+        return a.puntuacion < b.puntuacion ? 1 : -1;
+      });
+      console.log(puntuaciones);
+      let cadena = "";
+      puntuaciones.forEach((jugador) => {
+        cadena += jugador.jugador + " " + jugador.puntuacion + "\n";
+      });
+      alert(cadena);
     }
   }
 }
