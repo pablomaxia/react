@@ -1,6 +1,5 @@
 import "./App.css";
-import CajasTexto from "./components/CajasTexto";
-import Texto from "./components/Texto copy";
+import Texto from "./components/Texto";
 function App() {
   return (
     <div className="App">
