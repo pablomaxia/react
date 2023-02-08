@@ -11,7 +11,7 @@ const App = (props) => {
     return c + 1;
   };
 
-  const increment = () => setCount(inc(max));
+  const increment = () => setCount((c) => inc(c));
 
   const decrement = () => setCount((c) => c - 1);
   const reset = () => setCount(() => 0);
