@@ -12,7 +12,8 @@ code {
     monospace;
 }
 
-.contenedor {
+.contenedor,
+.container-counter {
   margin: 0 auto;
   padding: 5em;
   font-family: monospace;
@@ -20,7 +21,8 @@ code {
   border: 1px dashed beige;
 }
 
-.contador {
+.contador,
+.counter {
   padding: 0.2em;
   margin: 3em;
   text-align: center;

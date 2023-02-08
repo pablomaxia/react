@@ -1,9 +1,33 @@
 import "./App.css";
-import Contador from "./componentes/Contador";
-import { Component } from "react";
+import Contador from "./hooks/Contador";
+import React from "react";
 
-class App extends Component {
-  constructor(props) {
+const App = (props) => {
+  const [count, setCount] = React.useState(0);
+  const max = 5;
+
+  const inc = (c) => {
+    if (c >= max) return c;
+    return c + 1;
+  };
+
+  const increment = () => setCount(inc(max));
+
+  const decrement = () => setCount((c) => c - 1);
+  const reset = () => setCount(() => 0);
+
+  return (
+    <Contador
+      value={count}
+      increment={increment}
+      decrement={decrement}
+      reset={reset}
+    />
+  );
+};
+export default App;
+
+/*constructor(props) {
     super(props);
     this.state = {
       maximo: 5,
@@ -19,7 +43,4 @@ class App extends Component {
         </header>
       </div>
     );
-  }
-}
-
-export default App;
+  }*/

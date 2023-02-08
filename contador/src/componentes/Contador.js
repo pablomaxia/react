@@ -31,8 +31,8 @@ export default class Contador extends Component {
         console.log(this.state.count);
       }
     );
-    this.setState((state) => ({ count: this.state.count + 1 }));
-    this.setState((state) => ({ count: this.state.count + 1 }));
+    //this.setState((state) => ({ count: this.state.count + 1 }));
+    //this.setState((state) => ({ count: this.state.count + 1 }));
   }
 
   // Resta 1 el contador
