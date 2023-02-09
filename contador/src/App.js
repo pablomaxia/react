@@ -4,17 +4,38 @@ import React from "react";
 
 const App = (props) => {
   const [count, setCount] = React.useState(0);
-  const max = 5;
+  //const max = 5;
 
-  const inc = (c) => {
+  const increment = () => {
+    setCount((c) => c + 1);
+  };
+  const decrement = () => setCount((c) => c - 1);
+  const reset = () => setCount(() => 0);
+
+  React.useEffect(() => {
+    (document.title = "Tu contador es " + count), [];
+  });
+
+  /*const increment = () => {
+    setCount((c) => c + 1);
+    setCount((c) => c + 1);
+    setCount((c) => c + 1);
+  };*/
+  /*
+  const increment = () => setCount(inc(count));
+    const inc = (c) => {
     if (c >= max) return c;
     return c + 1;
   };
-
-  const increment = () => setCount((c) => inc(c));
-
-  const decrement = () => setCount((c) => c - 1);
-  const reset = () => setCount(() => 0);
+  */
+  /*  
+  const increment = () =>
+    setCount((c) => {
+      if (c >= max) return c;
+      return c + 1;
+    });
+  */
+  // const increment = () => setCount((c) => c + 1)
 
   return (
     <Contador
