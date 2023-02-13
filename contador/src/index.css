@@ -15,7 +15,7 @@ code {
 .contenedor,
 .container-counter {
   margin: 0 auto;
-  padding: 5em;
+  padding: 0.5em;
   font-family: monospace;
   background-color: darkslategrey;
   border: 1px dashed beige;
