@@ -3,6 +3,9 @@ import Opcion from "./Opcion";
 import Boton from "./Boton";
 import Texto from "./Texto";
 import Producto from "./Producto";
+import Storage from './../libs/storage';
+const vault = Storage({ name: 'productos' });
+const initialState = vault.get()
 
 const Formulario = () => {
   const [valor, setValor] = React.useState({
@@ -11,7 +14,7 @@ const Formulario = () => {
     cantidad: "",
   });
 
-  const [productos, setProductos] = React.useState([]);
+  const [productos, setProductos] = React.useState(initialState ? initialState : []);
 
   const handleTextChange = (e) => {
     setValor({
@@ -30,6 +33,7 @@ const Formulario = () => {
     console.log(productos);
   };
 
+  React.useEffect(() => vault.save(productos),[productos])
   return (
     <div>
       <form>
