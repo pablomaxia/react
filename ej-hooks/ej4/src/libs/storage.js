@@ -13,6 +13,14 @@ const Storage = (localStorage) => ({ name }) => ({
         } catch (ex) {
             console.warn('Check out your permissions or space');
         }
+    },
+
+    remove(name){
+        try {
+            return JSON.removeItem(localStorage.getItem(name));
+        } catch (ex) {
+            return null;
+        }
     }
 });
 
