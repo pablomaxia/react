@@ -32,16 +32,17 @@ const Formulario = () => {
       cantidad: valor.cantidad,
     };
     setProductos(productos.concat(producto));
-    console.log(productos);
   };
 
-  const borrarProducto = (nombre) => {
-    vault.remove(nombre);
-    setProductos(productos.splice(productos.indexOf(nombre),1));
-    console.log(productos);
+  const borrarProducto = (p) => {
+    vault.remove(p);
+    setProductos(productos.slice(p, -1));
   };
 
-  React.useEffect(() => vault.save(productos), [productos]);
+  React.useEffect(() => {
+    vault.save(productos);
+    console.log(productos);
+  }, [productos]);
   return (
     <div>
       <div>
@@ -59,9 +60,9 @@ const Formulario = () => {
           tipo="number"
           metodoOnChange={handleTextChange}
         />
-        <label>Cantidad: </label>
       </div>
       <div>
+        <label>Cantidad: </label>
         <Texto
           nombre="cantidad"
           valor={valor.cantidad}
@@ -71,7 +72,7 @@ const Formulario = () => {
       </div>
       <Boton tipo="button" nombre="Aceptar" metodo={handleSubmit} />
       <div>
-        <table class="table">
+        <table className="table">
           <thead>
             <tr>
               <th className="css-fix">Producto</th>
@@ -79,15 +80,17 @@ const Formulario = () => {
               <th className="css-fix">Cantidad</th>
             </tr>
           </thead>
-          {productos.map(({ nombre, precio, cantidad }) => (
-            <Producto
-              key={nombre}
-              nombre={nombre}
-              precio={precio}
-              cantidad={cantidad}
-              metodoOnClick={borrarProducto}
-            />
-          ))}
+          <tbody>
+            {productos.map(({ nombre, precio, cantidad }) => (
+              <Producto
+                key={nombre}
+                nombre={nombre}
+                precio={precio}
+                cantidad={cantidad}
+                metodoOnClick={borrarProducto}
+              />
+            ))}
+          </tbody>
         </table>
       </div>
     </div>

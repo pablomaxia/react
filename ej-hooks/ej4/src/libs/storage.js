@@ -15,9 +15,9 @@ const Storage = (localStorage) => ({ name }) => ({
         }
     },
 
-    remove(name){
+    remove(obj){
         try {
-            return JSON.removeItem(localStorage.getItem(name));
+            return JSON.removeItem(localStorage.getItem(obj.key));
         } catch (ex) {
             return null;
         }

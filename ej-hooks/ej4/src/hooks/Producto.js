@@ -5,14 +5,14 @@ const Producto = ({
   cantidad = "",
   metodoOnClick = () => {},
 }) => (
-  <tbody>
-    <tr>
-      <td>{nombre} </td>
-      <td>{precio} €</td>
-      <td>{cantidad} uds</td>
+  <tr>
+    <td>{nombre} </td>
+    <td>{precio} €</td>
+    <td>{cantidad} uds</td>
+    <td>
       <Boton tipo="button" nombre="Borrar" metodo={metodoOnClick} />
-    </tr>
-  </tbody>
+    </td>
+  </tr>
 );
 
 export default Producto;
