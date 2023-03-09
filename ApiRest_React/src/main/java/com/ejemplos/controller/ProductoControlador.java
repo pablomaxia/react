@@ -1,11 +1,6 @@
 package com.ejemplos.controller;
 
 import java.util.List;
-import java.util.stream.Collectors;
-
-import com.ejemplos.DTO.CreateProductoDTO;
-import com.ejemplos.DTO.ProductoDTO;
-import com.ejemplos.DTO.ProductoDTOConverter;
 import com.ejemplos.excepciones.ProductoNotFoundException;
 import com.ejemplos.modelo.*;
 
@@ -25,8 +20,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class ProductoControlador {
 	private final ProductoRepositorio productoRepositorio;
-	private final CategoriaRepositorio categoriaRepositorio;
-	private final ProductoDTOConverter productoDTOConverter;
 
 	@GetMapping("/producto")
 	public ResponseEntity<?> obtenerTodos() {
@@ -34,10 +27,8 @@ public class ProductoControlador {
 		if (result.isEmpty()) {
 			return ResponseEntity.notFound().build();// Devolver código 404
 		} else {
-			List<ProductoDTO> dtoList = result.stream().map(productoDTOConverter::convertirADto)
-					.collect(Collectors.toList());
-
-			return ResponseEntity.ok(dtoList);// Devuelve código 200 (devuelve datos y los muestra).
+		
+			return ResponseEntity.ok(result);// Devuelve código 200 (devuelve datos y los muestra).
 		}
 	}
 
@@ -47,15 +38,14 @@ public class ProductoControlador {
 		if (result == null)
 			throw new ProductoNotFoundException(id);// Devolver código 404
 
-		return ResponseEntity.ok(productoDTOConverter.convertirADto(result));// Devuelve código 200 (devuelve datos y
+		return ResponseEntity.ok(result);// Devuelve código 200 (devuelve datos y
 																				// los muestra).
 
 	}
 
 	@PostMapping("/producto")
-	public ResponseEntity<?> nuevoProducto(@RequestBody CreateProductoDTO nuevo) {
-		Producto n = productoDTOConverter.convertirAProd(nuevo);
-		return ResponseEntity.status(HttpStatus.CREATED).body(productoRepositorio.save(n));// Devuelve código 201
+	public ResponseEntity<?> nuevoProducto(@RequestBody Producto nuevo) {
+		return ResponseEntity.status(HttpStatus.CREATED).body(productoRepositorio.save(nuevo));// Devuelve código 201
 																							// (producto insertado).
 
 	}

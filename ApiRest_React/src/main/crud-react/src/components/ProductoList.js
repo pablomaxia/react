@@ -13,7 +13,10 @@ class ProductoList extends Component {
   componentDidMount() {
     fetch("/producto")
       .then((response) => response.json())
-      .then((data) => this.setState({ productos: data }));
+      .then((data) => {
+        console.log(data);
+        this.setState({ productos: data });
+      });
   }
 
   async remove(id) {
@@ -33,13 +36,12 @@ class ProductoList extends Component {
 
   render() {
     const { productos } = this.state;
-
     const clientList = productos.map((producto) => {
       return (
         <tr key={producto.id}>
           <td style={{ whiteSpace: "nowrap" }}>{producto.nombre}</td>
           <td>{producto.precio}</td>
-          <td>{producto.categoriaNombre}</td>
+          <td>{producto.categoria.nombre}</td>
           <td>
             <ButtonGroup>
               <Button

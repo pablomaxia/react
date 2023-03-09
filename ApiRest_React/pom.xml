@@ -18,8 +18,12 @@
 	<properties>
 		<java.version>1.8</java.version>
 		<frontend-src-dir>${project.basedir}/src/main/crud-react</frontend-src-dir>
+		<node.version>v16.18.0</node.version>
+		<yarn.version>v1.22.19</yarn.version>
+		<!--
 		<node.version>v14.15.4</node.version>
-		<yarn.version>v1.16.0</yarn.version>
+        <yarn.version>v1.16.0</yarn.version>
+		-->
 		<frontend-maven-plugin.version>1.7.6</frontend-maven-plugin.version>
 	</properties>
 
@@ -75,10 +79,18 @@
 
 	<build>
 		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
+			 <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <excludes>
+                        <exclude>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                        </exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
 			<plugin>
 				<groupId>com.github.eirslett</groupId>
 				<artifactId>frontend-maven-plugin</artifactId>
@@ -117,6 +129,28 @@
 						<phase>prepare-package</phase>
 						<configuration>
 							<arguments>build</arguments>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>position-react-build</id>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<phase>prepare-package</phase>
+						<configuration>
+							<outputDirectory>${project.build.outputDirectory}/static</outputDirectory>
+							<resources>
+								<resource>
+									<directory>${frontend-src-dir}/build</directory>
+									<filtering>false</filtering>
+								</resource>
+							</resources>
 						</configuration>
 					</execution>
 				</executions>

@@ -7,7 +7,7 @@ class ProductoEdit extends Component {
   emptyItem = {
     nombre: "",
     precio: "",
-    categoriaNombre: ""
+    categoriaId: ""
   };
 
   constructor(props) {
@@ -85,14 +85,14 @@ class ProductoEdit extends Component {
               />
             </FormGroup>
             <FormGroup>
-              <Label for="categoriaNombre">Categoría</Label>
+              <Label for="categoriaId">Categoría</Label>
               <Input
-                type="text"
-                name="categoriaNombre"
-                id="categoriaNombre"
-                value={item.categoriaNombre || ""}
+                type="number"
+                name="categoriaId"
+                id="categoriaId"
+                value={item.categoriaId || ""}
                 onChange={this.handleChange}
-                autoComplete="categoriaNombre"
+                autoComplete="categoriaId"
               />
             </FormGroup>
             <FormGroup>
