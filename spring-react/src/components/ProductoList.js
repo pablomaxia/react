@@ -40,7 +40,7 @@ class ProductoList extends Component {
       return (
         <tr key={producto.id}>
           <td style={{ whiteSpace: "nowrap" }}>{producto.nombre}</td>
-          <td>{producto.precio}</td>
+          <td>{producto.precio} €</td>
           <td>
             <Button
               color="primary"
