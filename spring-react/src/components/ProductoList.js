@@ -24,8 +24,8 @@ class ProductoList extends Component {
       method: "DELETE",
       headers: {
         Accept: "application/json",
-        "Content-Type": "application/json"
-      }
+        "Content-Type": "application/json",
+      },
     }).then(() => {
       let productosActualizados = [...this.state.productos].filter(
         (i) => i.id !== id
@@ -42,21 +42,20 @@ class ProductoList extends Component {
           <td style={{ whiteSpace: "nowrap" }}>{producto.nombre}</td>
           <td>{producto.precio}</td>
           <td>
-            <ButtonGroup>
-              <Button
-                size="sm"
-                color="primary"
-                tag={Link}
-                to={"/productos/" + producto.id}>
-                Editar
-              </Button>
-              <Button
-                size="sm"
-                color="danger"
-                onClick={() => this.remove(producto.id)}>
-                Borrar
-              </Button>
-            </ButtonGroup>
+            <Button
+              color="primary"
+              tag={Link}
+              to={"/productos/" + producto.id}
+              onClick={() =>
+                (window.location.href = "/productos/" + producto.id)
+              }>
+              Editar
+            </Button>
+          </td>
+          <td>
+            <Button color="danger" onClick={() => this.remove(producto.id)}>
+              Borrar
+            </Button>
           </td>
         </tr>
       );
@@ -66,8 +65,12 @@ class ProductoList extends Component {
       <div>
         <AppNavbar />
         <Container fluid>
-          <div className="float-right">
-            <Button color="success" tag={Link} to="/productos/nuevo">
+          <div style={{ float: "right" }}>
+            <Button
+              color="success"
+              tag={Link}
+              to="/productos/nuevo"
+              onClick={() => (window.location.href = "/productos/nuevo")}>
               Nuevo Producto
             </Button>
           </div>
@@ -75,8 +78,10 @@ class ProductoList extends Component {
           <Table className="mt-4">
             <thead>
               <tr>
-                <th width="50%">Nombre</th>
-                <th width="50%">Precio</th>
+                <th width="40%">Nombre</th>
+                <th width="20%">Precio</th>
+                <th width="20%">Editar</th>
+                <th width="20%">Borrar</th>
               </tr>
             </thead>
             <tbody>{clientList}</tbody>

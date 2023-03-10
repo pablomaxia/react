@@ -12,6 +12,6 @@ code {
     monospace;
 }
 
-.float-right{
-  float: right;
+.navbar-brand{
+  padding: 0.25em;
 }

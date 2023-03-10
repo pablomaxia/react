@@ -12,7 +12,7 @@ class ProductoEdit extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      item: this.emptyItem
+      item: this.emptyItem,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -44,9 +44,9 @@ class ProductoEdit extends Component {
       method: item.id ? "PUT" : "POST",
       headers: {
         Accept: "application/json",
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(item)
+      body: JSON.stringify(item),
     });
     this.props.history.push("/productos");
   }
@@ -83,11 +83,20 @@ class ProductoEdit extends Component {
                 autoComplete="precio"
               />
             </FormGroup>
+            <div style={{ padding: 0.5 + "em" }}></div>
             <FormGroup>
-              <Button color="primary" type="submit">
+              <Button
+                color="primary"
+                type="submit"
+                onClick={() => (window.location.href = "/productos")}
+                style={{ marginRight: 1 + "em" }}>
                 Guardar
               </Button>
-              <Button color="secondary" tag={Link} to="/productos">
+              <Button
+                color="secondary"
+                tag={Link}
+                to="/productos"
+                onClick={() => (window.location.href = "/productos")}>
                 Cancelar
               </Button>
             </FormGroup>

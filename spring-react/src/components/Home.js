@@ -11,7 +11,11 @@ class Home extends Component {
         <AppNavbar />
         <Container fluid>
           <Button color="link">
-            <Link to="/productos">Productos</Link>
+            <Link
+              to="/productos"
+              onClick={() => (window.location.href = "/productos")}>
+              Productos
+            </Link>
           </Button>
         </Container>
       </div>
